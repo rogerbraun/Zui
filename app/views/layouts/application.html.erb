@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zui</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="topbar">
+  <div class="fill">
+    <div class="container">
+      <h3><a href="#">Zui</a></h3>
+      <ul></ul>
+    </div>
+  </div>
+</div>
+
+<%= yield %>
+
+</body>
+</html>
