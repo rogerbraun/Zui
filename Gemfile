@@ -23,6 +23,8 @@ group :development, :test do
   gem "rspec-rails"
 end
 
+gem "devise"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

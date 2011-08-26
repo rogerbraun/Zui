@@ -1,0 +1,40 @@
+<div class="container">
+  <section id="index">
+    <div class="row">
+      <div class="span4 columns">
+        <h3>Aktionen</h3>
+        <p>
+          <%= link_to 'New Project', new_project_path, :class => "btn primary" %>
+        </p>
+
+      </div>
+      <div class="span12 columns">
+        <h3>Projekte</h3>
+        <table class="common-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <% @projects.each do |project| %>
+              <tr>
+                <td><%= project.title %></td>
+                <td><%= project.description %></td>
+                <td><%= link_to 'Show', project %></td>
+                <td><%= link_to 'Edit', edit_project_path(project) %></td>
+                <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </section>
+</div>
