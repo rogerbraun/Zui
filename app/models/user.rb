@@ -10,4 +10,9 @@ class User < ActiveRecord::Base
   def admin?
     group.split(",").include?("admin")
   end
+
+  def gravatar_link
+    digest = Digest::MD5.hexdigest(self.email.downcase)
+    "http://www.gravatar.com/avatar/#{digest}?s=35&d=mm"
+  end
 end

@@ -10,8 +10,17 @@
 <div class="topbar">
   <div class="fill">
     <div class="container">
-      <h3><a href="#">Zui</a></h3>
+      <h3><%= link_to "Zui", root_path %></h3>
       <ul></ul>
+      <ul class="nav secondary-nav">
+        <% if user_signed_in? %>
+          <li><%= link_to "Abmelden", destroy_user_session_path, :method => :delete %></li>
+          <%= image_tag current_user.gravatar_link, :class => "avatar" %>
+        <% else %>
+          <li><%= link_to "Anmelden", new_user_session_path %></li>
+          <li><%= link_to "Registrieren", new_user_registration_path %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
