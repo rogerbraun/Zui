@@ -5,7 +5,9 @@ gem 'rails', '3.1.0'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+group :heroku do
+  gem "pg"
+end
 
 
 # Gems used only for assets and not required
@@ -21,6 +23,7 @@ gem 'jquery-rails'
 group :development, :test do
   gem "therubyracer"
   gem "rspec-rails"
+  gem 'sqlite3'
 end
 
 gem "devise"
