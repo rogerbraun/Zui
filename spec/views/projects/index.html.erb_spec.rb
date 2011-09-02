@@ -5,11 +5,13 @@ describe "projects/index.html.erb" do
     assign(:projects, [
       stub_model(Project,
         :title => "Title",
-        :description => "MyText"
+        :description => "MyText",
+        :user => stub_model(User, :email => "test@example.org")
       ),
       stub_model(Project,
         :title => "Title",
-        :description => "MyText"
+        :description => "MyText",
+        :user => stub_model(User, :email => "test@example.org")
       )
     ])
   end

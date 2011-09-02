@@ -10,6 +10,11 @@ class Ability
     else
       can :read, :all
     end
+    
+    can :create, Project
+    can :manage, Project, :user_id => user.id
+
+    
     #
     # The first argument to `can` is the action you are giving the user permission to do.
     # If you pass :manage it will apply to every action. Other common actions here are

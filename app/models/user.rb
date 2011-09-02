@@ -7,12 +7,16 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
+  has_many :projects
+  has_many :collaborations
+  has_many :shared_projects, :through => :collaborations, :source => :project
+
   def admin?
-    group.split(",").include?("admin")
+    group && group.split(",").include?("admin")
   end
 
-  def gravatar_link
+  def gravatar_link(size = 35, default = "mm")
     digest = Digest::MD5.hexdigest(self.email.downcase)
-    "http://www.gravatar.com/avatar/#{digest}?s=35&d=mm"
+    "http://www.gravatar.com/avatar/#{digest}?s=#{size}&d=#{default}"
   end
 end

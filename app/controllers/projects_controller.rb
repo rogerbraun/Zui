@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  load_and_authorize_resource
   # GET /projects
   # GET /projects.json
   def index
@@ -40,7 +41,9 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
+
     @project = Project.new(params[:project])
+    @project.user = current_user
 
     respond_to do |format|
       if @project.save
