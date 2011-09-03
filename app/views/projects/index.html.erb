@@ -10,14 +10,12 @@
       </div>
       <div class="span12 columns">
         <h3>Projekte</h3>
-        <table class="common-table">
+        <table class="zebra-striped">
           <thead>
             <tr>
               <th>Title</th>
               <th>Description</th>
               <th>Owner</th>
-              <th></th>
-              <th></th>
               <th></th>
             </tr>
           </thead>
@@ -26,11 +24,13 @@
             <% @projects.each do |project| %>
               <tr>
                 <td><%= project.title %></td>
-                <td><%= project.description %></td>
+                <td><%= truncate(project.description, :length => 50) %></td>
                 <td><%= project.user.email%></td>
-                <td><%= link_to 'Show', project %></td>
-                <td><%= link_to 'Edit', edit_project_path(project) %></td>
-                <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>
+                <td>
+                  <% if can? :read, project %>
+                    <%= link_to 'Show', project %>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           </tbody>

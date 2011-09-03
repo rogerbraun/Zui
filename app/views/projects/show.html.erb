@@ -1,15 +1,77 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="page-header">
+    <h1>Projektübersicht</h1>
+  </div>
+  <div class="row">
+    <div class="span4 columns">
+      <h3>Was man hier macht</h3>
+      <p>
+        Lorem ipsum dolor sit amet.
+      </p>
+      <%= link_to 'Edit', edit_project_path(@project) %> |
+      <%= link_to 'Back', projects_path %>
 
-<p>
-  <b>Title:</b>
-  <%= @project.title %>
-</p>
+    </div>
+    <div class="span12 columns">
+      <div id="project_info">
+        <h3><%= @project.title %></h3>
+        <p><%= @project.description %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span4 columns">
+      <h3>Was man hier macht</h3>
+      
+      <p>
+        Lorem ipsum dolor sit amet.
+      </p>
 
-<p>
-  <b>Description:</b>
-  <%= @project.description %>
-</p>
+    </div>
+    <div class="span12 columns">
+      <div id="fragments">
+        <h3>Fragmente</h3>
+        <% if @project.fragments.empty? %>
+          <div class="alert-message block-message info"> 
+            <p><strong>Keine Fragmente vorhanden!</strong> Um die Texte zu bearbeiten müssen sie in Fragmenten hinzugefügt werden. Fragmente können Texte oder Bilder sein.</p> 
+            <div class="alert-actions"> 
+              <%= link_to "Fragment erstellen", new_project_fragment_path(@project), :class => "btn small" %>
+            </div> 
+          </div> 
+          
 
+        <% else %>
+           <table class="zebra-striped"> 
+            <thead> 
+            <tr> 
+              <th>#</th> 
+              <th>Name</th>
+              <th>Content</th> 
+              <th>Bild vorhanden?</th>
+              <th></th>
+            </tr>
+            </thead> 
+            <tbody> 
+              <% @project.fragments.each do |fragment| %>
+                <tr>
+                  <td><%= fragment.id %></td>
+                  <td><%= fragment.title %></td>
+                  <td><%= truncate(fragment.content, :length => 20) %></td>
+                  <td><%= fragment.image.url ? link_to("Ja",fragment.image.url) : "Nein" %></td>
+                  <td>
+                    <%= link_to "Ansehen", [@project, fragment] %>
+                    <% if can? :edit, @project then %>
+                      | <%= link_to "Bearbeiten", edit_project_fragment_path(fragment) %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody> 
+          </table> 
+          <%= link_to "Fragment erstellen", new_project_fragment_path(@project), :class => "btn primary" %>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

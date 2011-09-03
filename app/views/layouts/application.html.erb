@@ -11,7 +11,7 @@
   <div class="fill">
     <div class="container">
       <h3><%= link_to "Zui", root_path %></h3>
-      <ul>
+      <ul class = "nav">
         <% if user_signed_in? %>
           <li><%= link_to "Projekte", projects_path %></li>
         <% end %>

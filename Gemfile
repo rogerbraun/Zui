@@ -28,6 +28,7 @@ end
 
 gem "devise"
 gem "cancan"
+gem "carrierwave"
 
 # Use unicorn as the web server
 # gem 'unicorn'
