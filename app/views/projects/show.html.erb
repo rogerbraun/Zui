@@ -61,7 +61,7 @@
                   <td>
                     <%= link_to "Ansehen", [@project, fragment] %>
                     <% if can? :edit, @project then %>
-                      | <%= link_to "Bearbeiten", edit_project_fragment_path(fragment) %>
+                      | <%= link_to "Bearbeiten", edit_project_fragment_path(@project, fragment) %>
                     <% end %>
                   </td>
                 </tr>

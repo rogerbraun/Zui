@@ -4,7 +4,7 @@
       <div class="span4 columns">
         <h3>Aktionen</h3>
         <p>
-          <%= link_to 'New Project', new_project_path, :class => "btn primary" %>
+          <%= link_to 'Neues Projekt', new_project_path, :class => "btn primary" %>
         </p>
 
       </div>
@@ -28,7 +28,9 @@
                 <td><%= project.user.email%></td>
                 <td>
                   <% if can? :read, project %>
-                    <%= link_to 'Show', project %>
+                    <%= link_to 'Ansehen', project %>
+                  <% else %>
+                    Keine Berechtigung
                   <% end %>
                 </td>
               </tr>

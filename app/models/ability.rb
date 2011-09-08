@@ -14,6 +14,14 @@ class Ability
     end
     can :create, Project
     can :manage, Project, :user_id => user.id
+    can :read, Fragment do |fragment|
+      fragment.project.collaborator_ids.include? user.id
+    end
+    can :create, Fragment
+    can :manage, Fragment do |fragment|
+      fragment.project.user_id == user.id
+    end
+      
 
     
     #

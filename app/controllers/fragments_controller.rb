@@ -1,4 +1,6 @@
 class FragmentsController < ApplicationController
+  load_and_authorize_resource
+
   def new
     @project = Project.find(params[:project_id])
     @fragment = @project.fragments.build
