@@ -6,6 +6,6 @@
       <%= link_to "Zum Fragment gehen", project_fragment_path(comment.fragment.project, comment.fragment) %>
     </div>
   </div>
-  <p><%= comment.body %></p>
+  <p><%= Kramdown::Document.new(comment.body).to_html.html_safe %></p>
 </div>
 <% end %>
