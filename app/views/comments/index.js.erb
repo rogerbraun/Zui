@@ -1,2 +1,2 @@
-$("#comments_text").html("<%= escape_javascript(render(@comments))%>")
+$("#comments_text").html("<%= escape_javascript(nested_comments(@comments.arrange))%>")
 $("#flash-messages").html("<%= escape_javascript(render("devise/shared/flash-messages"))%>")

@@ -15,7 +15,9 @@ Zui::Application.routes.draw do
 
   resources :projects do
     resources :fragments do
-      resources :comments 
+      resources :comments do
+        get "reply"
+      end
     end
   end
     

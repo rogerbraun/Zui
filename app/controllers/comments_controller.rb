@@ -21,6 +21,16 @@ class CommentsController < ApplicationController
   def update
   end
 
+  def reply
+    @parent= Comment.find(params[:comment_id])
+    @fragment = @parent.fragment
+    @project = @fragment.project
+    @comment = Comment.new
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy

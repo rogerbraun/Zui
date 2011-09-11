@@ -16,9 +16,7 @@
       <div id="comments">
         <h3>Kommentare</h3>
         <div id="comments_text">
-          <% @comments.each do |comment| %>
-            <%= render comment %>
-          <% end %>
+          <%= nested_comments @comments.arrange %>
         </div>
         <%= render "comments/form" %>
       </div>
