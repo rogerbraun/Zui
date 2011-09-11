@@ -13,4 +13,5 @@ admin = User.new
 admin.email = "admin@localhost.com"
 admin.password = "adminadmin"
 admin.group = "admin"
+admin.name = "Admin"
 admin.save

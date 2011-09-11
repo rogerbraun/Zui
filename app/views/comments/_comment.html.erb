@@ -1,5 +1,5 @@
 <div class="comment" id="comment_id_<%= comment.id %>">
-  <div class="comment_head"><strong><%= image_tag comment.user.gravatar_link, :class => "avatar" %> <%= comment.user.email %></strong>, <%= comment.updated_at %>
+  <div class="comment_head"><strong><%= image_tag comment.user.gravatar_link, :class => "avatar" %> <%= comment.user.name %></strong>, <%= comment.updated_at %>
     <div class="comment_actions">
       <%= link_to "Antworten", project_fragment_comment_reply_path(comment.fragment.project, comment.fragment, comment), :remote => true %>
       <% if can? :destroy, comment %>
