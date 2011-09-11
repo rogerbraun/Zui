@@ -30,6 +30,7 @@ gem "devise"
 gem "cancan"
 gem "carrierwave"
 gem "ancestry"
+gem "kramdown"
 
 # Use unicorn as the web server
 # gem 'unicorn'

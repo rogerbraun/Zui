@@ -11,7 +11,7 @@
       <%= render "devise/shared/flash-messages" %>
       <div id="fragment_text">
         <h3><%= @fragment.title %></h3>
-        <p><%= @fragment.content%></p>
+        <%= Kramdown::Document.new(@fragment.content).to_html.html_safe%>
       </div>
       <div id="comments">
         <h3>Kommentare</h3>
