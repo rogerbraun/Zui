@@ -8,7 +8,8 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         @comments = @fragment.comments 
-        format.js {redirect_to project_fragment_comments_path, notice: "Kommentar erstellt"}
+        format.js { flash[:notice] = "Kommentar erstellt."
+                    render "index" }
         format.html { redirect_to [@fragment.project, @fragment], notice: 'Comment was successfully created.' }
       else
         #format.html { render action: "new" }
@@ -32,10 +33,13 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @fragment= Fragment.find(params[:fragment_id])
+    @comments = @fragment.comments 
     @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      format.js {redirect_to project_fragment_comments_path, notice: "Kommentar gelöscht"}
+      format.js { flash[:notice] = "Kommentar gelöscht"
+                  render "index" }
     end
   end
 
