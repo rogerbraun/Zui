@@ -1,0 +1,28 @@
+
+        <table class="zebra-striped">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Owner</th>
+              <th></th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <% @projects.each do |project| %>
+              <tr>
+                <td><%= project.title %></td>
+                <td><%= truncate(project.description, :length => 50) %></td>
+                <td><%= project.user.email%></td>
+                <td>
+                  <% if can? :read, project %>
+                    <%= link_to 'Ansehen', project %>
+                  <% else %>
+                    Keine Berechtigung
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
