@@ -19,8 +19,10 @@ class Ability
     end
     can :create, Fragment
     can :manage, Fragment do |fragment|
-      fragment.project.user_id == user.id
+      fragment.project and fragment.project.user_id == user.id
     end
+
+    can :manage, Comment, :user_id => user.id
       
 
     

@@ -1,0 +1,8 @@
+<div class="comment_form">
+  <%= form_for [@project, @fragment, @comment],:remote => true do |f| %>
+    <%= f.text_area :body, :rows => "4", :class => "full-width"%>
+    <div class="button">
+      <%= f.submit :class => "btn primary"%>
+    </div>
+  <% end %>
+</div>

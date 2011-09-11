@@ -1,12 +1,27 @@
 <div class="container">
   <div class="row">
-    <div class="span6 columns">
+    
+    <div class="span4 columns">
+      <h3>Bild</h3>
       <% if @fragment.image.url %>
         <%= image_tag @fragment.image.url %>
       <% end %>
     </div>
-    <div class="span10 columns">
-  
+    <div class="span12 columns">
+      <%= render "devise/shared/flash-messages" %>
+      <div id="fragment_text">
+        <h3><%= @fragment.title %></h3>
+        <p><%= @fragment.content%></p>
+      </div>
+      <div id="comments">
+        <h3>Kommentare</h3>
+        <div id="comments_text">
+          <% @comments.each do |comment| %>
+            <%= render comment %>
+          <% end %>
+        </div>
+        <%= render "comments/form" %>
+      </div>
     </div>
   </div>
 </div>

@@ -43,6 +43,9 @@ class FragmentsController < ApplicationController
   end
 
   def show
+    @project = Project.find(params[:project_id])
+    @comments = @fragment.comments
+    @comment = Comment.new
   end
 
 end

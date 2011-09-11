@@ -1,8 +1,22 @@
 Zui::Application.routes.draw do
 
 
+  get "comments/create"
+
+  get "comments/update"
+
+  get "comments/destroy"
+
+  get "comments/new"
+
+  get "comments/edit"
+
+  get "comments/index"
+
   resources :projects do
-    resources :fragments
+    resources :fragments do
+      resources :comments 
+    end
   end
     
 
