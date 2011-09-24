@@ -20,10 +20,20 @@ class CommentsController < ApplicationController
   end
 
   def update
+    @fragment = Fragment.find(params[:fragment_id])
+    @comments = @fragment.comments 
+    @comment = Comment.find(params[:id])
+
+    respond_to do |format|
+      if @comment.update_attributes(params[:comment])
+        format.js { flash[:notice] = "Kommentar verändert"
+                    render "index"}
+      end
+    end
   end
 
   def reply
-    @parent= Comment.find(params[:comment_id])
+    @parent = Comment.find(params[:comment_id])
     @fragment = @parent.fragment
     @project = @fragment.project
     @comment = Comment.new
@@ -33,7 +43,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @fragment= Fragment.find(params[:fragment_id])
+    @fragment = Fragment.find(params[:fragment_id])
     @comments = @fragment.comments 
     @comment = Comment.find(params[:id])
     @comment.destroy
@@ -47,6 +57,12 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @comment = Comment.find(params[:id])
+    @fragment = @comment.fragment
+    @project = @fragment.project
+    respond_to do |format|
+      format.js
+    end
   end
 
   def index
