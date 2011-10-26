@@ -1,5 +1,5 @@
 <div class="comment" id="comment_id_<%= comment.id %>">
-  <div class="comment_head"><strong><%= image_tag comment.user.gravatar_link, :class => "avatar" %> <%= comment.user.name %></strong>, <%= comment.updated_at %>
+  <div class="comment_head">
     <div class="comment_actions">
       <% if can? :edit, comment %>
         <%= link_to "Bearbeiten", edit_project_fragment_comment_path(comment.fragment.project, comment.fragment, comment), :remote => true %>
@@ -11,6 +11,10 @@
         <%= link_to "x", [comment.fragment.project ,comment.fragment, comment], :method =>"delete", :remote => true, :confirm => "Wirklich löschen?" %>
       <% end %>
     </div>
+    <%= image_tag comment.user.gravatar_link, :class => "avatar" %>
+    <%= content_tag :span, comment.user.name, :class => "name" %>
+    <%= l(comment.updated_at, :format => :short) %>
+    <%= content_tag :div, comment.tag_list.map{|tag| content_tag :span, tag, :class => "label notice"}.join(" ").html_safe, :class => "tags" %>
   </div>
   <p><%= Kramdown::Document.new(comment.body).to_html.html_safe %></p>
 </div>

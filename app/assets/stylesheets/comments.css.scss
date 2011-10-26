@@ -5,11 +5,20 @@
   background-color: #fefbf3; 
   border-color: rgba(0, 0, 0, 0.199219);
   border-width: 1px;
-  border-style: solid;
+  border-style: dotted;
   margin-bottom: 10px;
   padding: 10px;
   padding-bottom: 0px;
 
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.comment .comment_head {
+  border-width: 0px 0px 1px 0px;
+  padding-bottom:2px;
+  border-style: dotted ;
 }
 
 .nested {
@@ -21,20 +30,14 @@
   display: block;
 }
 
-.comment_form {
-  background-color: #fefbf3; 
-  border-color: rgba(0, 0, 0, 0.199219);
-  border-width: 1px;
-  border-style: solid;
-  padding-bottom: 0px; 
-  margin-bottom: 10px;
-  .full-width {
-    margin: 10px;
-    width: 95%;
-   }
- 
-  .button {
-    margin-left: 10px; 
-  }
-  
+.comment .name {
+  font-weight: bold;
+  display: block;
 }
+
+.comment .avatar {
+  display: block;
+  float: left;
+  margin-right: 5px;
+}
+

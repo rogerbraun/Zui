@@ -1,1 +1,2 @@
-$("#comment_id_<%=@parent.id%>").after("<%= escape_javascript(render "comments/form") %>");
+$(".comment_answer").remove();
+$("#comment_id_<%=@parent.id%>").after("<div class='comment_answer nested'><%= escape_javascript(render "comments/form") %></div>");

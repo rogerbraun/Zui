@@ -1,0 +1,8 @@
+de:
+  comment:
+    new: Neuer Kommentar
+    body: Kommentartext
+    submit: Kommentieren
+  time:
+    formats:
+      short: "%d.%m.%Y, %H Uhr"

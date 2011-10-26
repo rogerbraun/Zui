@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
+  acts_as_taggable
   belongs_to :fragment
   belongs_to :user
 

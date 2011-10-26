@@ -24,6 +24,8 @@ group :development, :test do
   gem "therubyracer"
   gem "rspec-rails"
   gem 'sqlite3'
+  gem "nokogiri"
+  gem "pry"
 end
 
 gem "devise"
@@ -31,6 +33,7 @@ gem "cancan"
 gem "carrierwave"
 gem "ancestry"
 gem "kramdown"
+gem "acts-as-taggable-on", "~>2.1.0"
 
 # Use unicorn as the web server
 # gem 'unicorn'

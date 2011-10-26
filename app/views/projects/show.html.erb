@@ -44,26 +44,15 @@
            <table class="zebra-striped"> 
             <thead> 
             <tr> 
-              <th>#</th> 
               <th>Name</th>
-              <th>Content</th> 
-              <th>Bild vorhanden?</th>
-              <th></th>
+              <th>Inhalt</th> 
             </tr>
             </thead> 
             <tbody> 
               <% @project.fragments.each do |fragment| %>
                 <tr>
-                  <td><%= fragment.id %></td>
-                  <td><%= fragment.title %></td>
-                  <td><%= truncate(fragment.content, :length => 20) %></td>
-                  <td><%= fragment.image.url ? link_to("Ja",fragment.image.url) : "Nein" %></td>
-                  <td>
-                    <%= link_to "Ansehen", [@project, fragment] %>
-                    <% if can? :edit, @project then %>
-                      | <%= link_to "Bearbeiten", edit_project_fragment_path(@project, fragment) %>
-                    <% end %>
-                  </td>
+                  <td><%= link_to fragment.title, [@project, fragment] %></td>
+                  <td><%= link_to truncate(fragment.content, :length => 50), [@project, fragment] %></td>
                 </tr>
               <% end %>
             </tbody> 

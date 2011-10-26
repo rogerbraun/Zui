@@ -3,3 +3,5 @@
 
 en:
   hello: "Hello world"
+  comment:
+    body: "Comment text"
