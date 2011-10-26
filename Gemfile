@@ -34,6 +34,7 @@ gem "carrierwave"
 gem "ancestry"
 gem "kramdown"
 gem "acts-as-taggable-on", "~>2.1.0"
+gem "simple_form"
 
 # Use unicorn as the web server
 # gem 'unicorn'
