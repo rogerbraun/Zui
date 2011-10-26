@@ -1,0 +1,2 @@
+$("#comment_id_<%=@comment.id%>").replaceWith("<%= escape_javascript(render "comments/form") %>");
+$(".tag_list").tagsInput({height: "35px", width: "528px"});
