@@ -4,12 +4,12 @@
   </div>
   <div class="row">
     <div class="span4 columns">
-      <h3>Was man hier macht</h3>
-      <p>
-        Lorem ipsum dolor sit amet.
-      </p>
-      <%= link_to 'Edit', edit_project_path(@project) %> |
-      <%= link_to 'Back', projects_path %>
+      <h3>Text und Mitarbeiter</h3>
+      <%= collaborator_list(@project) %>
+        
+      <% if can?(:edit, @project) %>
+        <%= link_to 'Text und Mitarbeiter bearbeiten', edit_project_path(@project) %>
+      <% end %>
 
     </div>
     <div class="span12 columns">
@@ -46,6 +46,7 @@
             <tr> 
               <th>Name</th>
               <th>Inhalt</th> 
+              <th>Kommentare</th>
             </tr>
             </thead> 
             <tbody> 
@@ -53,6 +54,7 @@
                 <tr>
                   <td><%= link_to fragment.title, [@project, fragment] %></td>
                   <td><%= link_to truncate(fragment.content, :length => 50), [@project, fragment] %></td>
+                  <td><%= fragment.comments.count %></td>
                 </tr>
               <% end %>
             </tbody> 

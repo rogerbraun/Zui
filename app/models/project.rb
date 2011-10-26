@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
   has_many :collaborations
   has_many :collaborators, :through => :collaborations, :source => :user
   has_many :fragments
+  has_many :comments, :through => :fragments
 
   attr_reader :collaborator_tokens
 
