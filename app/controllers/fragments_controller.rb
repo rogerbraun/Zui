@@ -1,3 +1,4 @@
+#encoding: utf-8
 class FragmentsController < ApplicationController
   load_and_authorize_resource
 
@@ -31,9 +32,23 @@ class FragmentsController < ApplicationController
   end
 
   def edit
+    @fragment = Fragment.find(params[:id])
+    @project = @fragment.project
+    respond_to do |f|
+      f.js
+    end
   end
 
   def update
+    @fragment = Fragment.find(params[:id])
+
+    respond_to do |format|
+      if @fragment.update_attributes(params[:fragment])
+        format.js { flash[:notice] = "Fragment verändert"
+                    render "fragment_text"}
+      end
+    end
+    
   end
 
   def destroy

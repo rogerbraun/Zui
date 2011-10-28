@@ -1,0 +1,7 @@
+<h3><%= @fragment.title %></h3>
+<%= Kramdown::Document.new(@fragment.content).to_html.html_safe%>
+<div id="fragment_actions">
+  <% if can? :edit, @fragment %>
+    <%= link_to t("fragment.edit"), edit_project_fragment_path(@fragment.project, @fragment), :class => "btn", :remote => true %>
+  <% end %>
+</div>
