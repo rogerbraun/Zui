@@ -59,8 +59,9 @@ class FragmentsController < ApplicationController
 
   def show
     @project = Project.find(params[:project_id])
-    @comments = @fragment.comments
+    @comments = @fragment.comments.order(:id)
     @comment = Comment.new
   end
+
 
 end

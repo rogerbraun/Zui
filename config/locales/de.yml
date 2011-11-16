@@ -5,6 +5,6 @@ de:
     submit: Kommentieren
   time:
     formats:
-      short: "%d.%m.%Y, %H Uhr"
+      short: "%d.%m.%Y, %H:%M Uhr"
   fragment:
     edit: Fragment bearbeiten

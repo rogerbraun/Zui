@@ -31,7 +31,7 @@
     <div class="span12 columns">
       <div id="fragments">
         <h3>Fragmente</h3>
-        <% if @project.fragments.empty? %>
+        <% if @fragments.empty? %>
           <div class="alert-message block-message info"> 
             <p><strong>Keine Fragmente vorhanden!</strong> Um die Texte zu bearbeiten müssen sie in Fragmenten hinzugefügt werden. Fragmente können Texte oder Bilder sein.</p> 
             <div class="alert-actions"> 
@@ -44,17 +44,19 @@
            <table class="zebra-striped"> 
             <thead> 
             <tr> 
-              <th>Name</th>
+              <th><%= link_to "Name", :sort => "id" %></th>
               <th>Inhalt</th> 
-              <th>Kommentare</th>
+              <th><%= link_to "Kommentare", :sort => "comments_count" %></th>
+              <th><%= link_to "Letztes Update", :sort => "updated_at" %></th>
             </tr>
             </thead> 
             <tbody> 
-              <% @project.fragments.each do |fragment| %>
+              <% @fragments.each do |fragment| %>
                 <tr>
                   <td><%= link_to fragment.title, [@project, fragment] %></td>
                   <td><%= link_to truncate(fragment.content, :length => 50), [@project, fragment] %></td>
                   <td><%= fragment.comments.count %></td>
+                  <td><%= fragment.updated_at %></td>
                 </tr>
               <% end %>
             </tbody> 

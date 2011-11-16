@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all
 
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @projects }
@@ -15,6 +16,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
+    @fragments = @project.fragments.order(sort_order)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -84,4 +86,11 @@ class ProjectsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  private
+
+  def sort_order
+    params[:sort] || "id"
+  end 
+
 end
