@@ -25,7 +25,6 @@ group :development, :test do
   gem "rspec-rails"
   gem "capybara"
   gem 'sqlite3'
-  gem "nokogiri"
   gem "pry"
 end
 
@@ -36,6 +35,7 @@ group :test do
   gem "rb-inotify"
 end
 
+gem "nokogiri"
 gem "devise"
 gem "cancan"
 gem "carrierwave"
