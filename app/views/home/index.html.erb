@@ -5,6 +5,9 @@
       <h1>Zui - Gemeinsam Texte bearbeiten <small>Los geht's!</small></h1>
       <div class="row">
         <% if user_signed_in? %>
+          <div class="span16">
+            <%= render "news" %> 
+          </div>
           <div class="span8 columns">
             <h3>Meine Projekte</h3>
             <% if @projects.empty? %>
