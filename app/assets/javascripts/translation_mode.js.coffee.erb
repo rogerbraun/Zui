@@ -27,7 +27,7 @@ initializeTranslationMode = () ->
     (menu) ->
       header = "[" + getSelected() + "]"
       menu.find(".header").text(header)
-      menu.find(".edit").text("Add #{getSelected()}")
+      menu.find(".edit").text("#{getSelected()} zum Glossar hinzufügen")
   )
 
   $(".translated").contextMenu(
