@@ -23,9 +23,17 @@ gem 'jquery-rails'
 group :development, :test do
   gem "therubyracer"
   gem "rspec-rails"
+  gem "capybara"
   gem 'sqlite3'
   gem "nokogiri"
   gem "pry"
+end
+
+group :test do
+  gem "factory_girl_rails"
+  gem "guard-rspec" 
+  gem "libnotify"
+  gem "rb-inotify"
 end
 
 gem "devise"
@@ -35,13 +43,4 @@ gem "ancestry"
 gem "kramdown"
 gem "acts-as-taggable-on", "~>2.1.0"
 gem "simple_form"
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
 
