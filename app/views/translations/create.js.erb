@@ -1,4 +1,3 @@
 var el = $("#modal-translation-form");
 el.modal("hide");
-$("#original-wrapper").load(window.location.toString() + " #original");
-document.initializeTranslationMode();
+$("#original-wrapper").load(window.location.toString() + " #original", undefined, function(){document.initializeTranslationMode();});
