@@ -1,5 +1,5 @@
 <div class="comment_form">
-  <%= form_for [@project, @fragment, @comment], :remote => true do |f| %>
+  <%= form_for [@project, @fragment, @comment], :html => {:class => "form-stacked"}, :remote => true do |f| %>
     <fieldset>
       <% if @parent %>
         <%= f.hidden_field :parent_id, :value => @parent.id %>

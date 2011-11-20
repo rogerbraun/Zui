@@ -28,6 +28,7 @@ class TranslationsController < ApplicationController
     @translation.source_lang = params[:source_lang]
 
     respond_to do |format|
+      format.js
       format.html # new.html.erb
       format.json { render json: @translation }
     end
@@ -45,6 +46,7 @@ class TranslationsController < ApplicationController
 
     respond_to do |format|
       if @translation.save
+        format.js
         format.html { redirect_to @translation, notice: 'Translation was successfully created.' }
         format.json { render json: @translation, status: :created, location: @translation }
       else

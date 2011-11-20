@@ -2,7 +2,16 @@ getSelected = () ->
   range = window.getSelection()
   range.toString()
 
-jQuery( () ->
+initializeTranslationMode = () ->
+  $(".translated").twipsy(
+    title: "data-translation"
+  )
+
+  $(".translated").click((event) ->
+    if event.which == 1
+      new_text = $("#comment_body").val() + " " + $(event.target).data("translation")
+      $("#comment_body").val(new_text)
+  )
 
   $(".translatable").contextMenu(
     {menu: "selectableMenu"}, 
@@ -13,7 +22,7 @@ jQuery( () ->
       if action == "wadoku"
         window.open("http://wadoku.eu/search/index?search=" + selected)
       if action == "edit"
-        window.location = "http://#{window.location.host}/translations/new?source_lang=#{selected}"
+        jQuery.ajax "http://#{window.location.host}/translations/new?source_lang=#{selected}"
     ,
     (menu) ->
       header = "[" + getSelected() + "]"
@@ -31,8 +40,8 @@ jQuery( () ->
       if action == "wadoku"
         window.open("http://wadoku.eu/search/index?search=" + selected)
       if action == "edit"
-        new_text = $("#comment_body").text() + translation
-        $("#comment_body").text(new_text)
+        new_text = $("#comment_body").val() + " " + translation
+        $("#comment_body").val(new_text)
     ,
     (menu, el) ->
       selected = el.text()
@@ -42,5 +51,8 @@ jQuery( () ->
       menu.find(".edit").text("D: #{translation}")
   )
 
+document.initializeTranslationMode = initializeTranslationMode  
 
+jQuery( () ->
+  initializeTranslationMode()
 )

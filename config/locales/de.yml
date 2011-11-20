@@ -9,3 +9,11 @@ de:
   fragment:
     translation_mode: Übersetzungsmodus
     edit: Fragment bearbeiten
+  translation:
+    submit: Speichern
+    new: Neues Wort ins Glossar aufnehmen
+  activerecord:
+    attributes:
+      translation:
+        source_lang: Quellsprache
+        target_lang: Zielsprache

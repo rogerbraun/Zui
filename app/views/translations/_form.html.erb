@@ -1,12 +1,19 @@
 <%= simple_form_for(@translation) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="inputs">
-    <%= f.input :source_lang %>
-    <%= f.input :target_lang %>
-  </div>
-
-  <div class="actions">
-    <%= f.button :submit %>
-  </div>
+  <fieldset>
+    <div class="clearfix">
+      <%= f.label :source_lang%>
+      <div class="input">
+        <%= f.text_area :source_lang, :rows => 3%>
+      </div>
+    </div>
+    <div class="clearfix">
+      <%= f.label :target_lang%>
+      <div class="input">
+        <%= f.text_area :target_lang, :rows => 3%>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit t("translation.submit"), :class => "btn primary"%>
+    </div>
+  </fieldset>
 <% end %>
