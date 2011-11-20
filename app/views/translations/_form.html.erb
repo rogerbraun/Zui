@@ -1,0 +1,12 @@
+<%= simple_form_for(@translation) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :source_lang %>
+    <%= f.input :target_lang %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

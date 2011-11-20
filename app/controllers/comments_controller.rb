@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        format.js { flash[:notice] = "Kommentar verändert"
+        format.js { flash[:notice] = "Kommentar gespeichert"
                     render "index"}
       end
     end

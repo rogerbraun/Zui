@@ -4,4 +4,5 @@
   <% if can? :edit, @fragment %>
     <%= link_to t("fragment.edit"), edit_project_fragment_path(@fragment.project, @fragment), :class => "btn", :remote => true %>
   <% end %>
+    <%= link_to t("fragment.translation_mode"), project_fragment_translation_mode_path(@fragment.project, @fragment), :class => "btn" %>
 </div>

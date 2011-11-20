@@ -51,6 +51,18 @@ class FragmentsController < ApplicationController
     
   end
 
+  def translation_mode
+    @fragment = Fragment.find(params[:fragment_id])
+    authorize! :read, @fragment
+    @comment = current_user.translation_comment(@fragment)
+    @project = @fragment.project
+    @origin = "translation_mode"
+
+    respond_to do |f|
+      f.html
+    end
+  end
+
   def destroy
   end
 

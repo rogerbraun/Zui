@@ -20,4 +20,16 @@ class User < ActiveRecord::Base
     digest = Digest::MD5.hexdigest(self.email.downcase)
     "http://www.gravatar.com/avatar/#{digest}?s=#{size}&d=#{default}"
   end
+
+  def translation_comment(fragment)
+    tc = fragment.comments.where("user_id = ?", id).tagged_with("aided-translation")
+    if tc.empty?
+      comment = comments.build
+      comment.fragment = fragment
+      comment.tag_list = "aided-translation"
+      return comment
+    else
+      return tc.first
+    end
+  end
 end

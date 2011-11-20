@@ -4,6 +4,9 @@
       <% if @parent %>
         <%= f.hidden_field :parent_id, :value => @parent.id %>
       <% end %>
+      <% if @origin %>
+        <%= "<input type='hidden' name='options[origin]' value='#{@origin}'>".html_safe%>
+      <% end %>
       <div class="clearfix">
         <%= f.label :tag_list, t("comment.tags") %>
         <div class="input">

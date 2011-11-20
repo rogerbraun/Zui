@@ -1,0 +1,29 @@
+<ul id="selectableMenu" class="contextMenu">
+  <li><span class="header">PLACEHOLDER</span></li>
+  <li><a href="#google">Google</a></li>
+  <li><a href="#wadoku">wadoku.eu</a></li>
+  <li><a href="#edit"><span class="edit">PLACEHOLDER</span></a></li>
+</ul>
+
+<div class="container">
+  <div class="row">
+    <div class="span16">
+      <%= render "devise/shared/flash-messages" %>
+    </div>
+    <div class="span4">
+      <h1>Original</h1>
+      <h2><%= @fragment.title %></h2>
+      <%= make_translatable @fragment.content %>
+    </div>
+    <div class="span12">
+      <h1>Übersetzung</h1>
+      <%= render "comments/form"%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span16">
+      <%= link_to "Zurück zum Fragment", project_fragment_path(@project, @fragment) %>
+    </div>
+  </div>
+</div>
+

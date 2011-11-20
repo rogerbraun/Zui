@@ -7,4 +7,5 @@ de:
     formats:
       short: "%d.%m.%Y, %H:%M Uhr"
   fragment:
+    translation_mode: Übersetzungsmodus
     edit: Fragment bearbeiten

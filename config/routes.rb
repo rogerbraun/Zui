@@ -1,6 +1,8 @@
 Zui::Application.routes.draw do
 
 
+  resources :translations
+
   get "comments/create"
 
   get "comments/update"
@@ -15,6 +17,9 @@ Zui::Application.routes.draw do
 
   resources :projects do
     resources :fragments do
+
+      get "translation_mode"
+      
       resources :comments do
         get "reply"
       end
