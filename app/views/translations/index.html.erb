@@ -1,25 +1,32 @@
-<h1>Listing translations</h1>
+<div class="container">
+  <section id="index">
+    <div class="row">
+      <div class="span4 columns">
+        <h3>Aktionen</h3>
+        <p>
+          <%= link_to 'Neue Übersetzung', new_translation_path, :class => "btn primary" %>
+        </p>
+      </div>
+      <div class="span12 columns">
+        <h3>Übersetzungen</h3>
+          <table class="bordered-table zebra-striped">
+            <tr>
+              <th>Quellsprache</th>
+              <th>Zielsprache</th>
+              <th></th>
+            </tr>
 
-<table>
-  <tr>
-    <th>Source lang</th>
-    <th>Target lang</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @translations.each do |translation| %>
-  <tr>
-    <td><%= translation.source_lang %></td>
-    <td><%= translation.target_lang %></td>
-    <td><%= link_to 'Show', translation %></td>
-    <td><%= link_to 'Edit', edit_translation_path(translation) %></td>
-    <td><%= link_to 'Destroy', translation, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Translation', new_translation_path %>
+            <% @translations.each do |translation| %>
+              <tr>
+                <td><%= translation.source_lang %></td>
+                <td><%= translation.target_lang %></td>
+                <td>
+                <%= link_to 'Bearbeiten', edit_translation_path(translation) %> |
+                <%= link_to 'Löschen', translation, confirm: 'Are you sure?', method: :delete %></td>
+              </tr>
+            <% end %>
+          </table>
+      </div>
+    </div>
+  </section>
+</div>
