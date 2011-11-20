@@ -1,11 +1,14 @@
 <% @comments.each do |comment| %>
-    
-<div class="comment" id="comment_id_<%= comment.id %>">
-  <div class="comment_head"><strong><%= image_tag comment.user.gravatar_link, :class => "avatar" %> <%= comment.user.name %></strong>, <%= comment.updated_at %>
-    <div class="comment_actions">
-      <%= link_to "Zum Fragment gehen", project_fragment_path(comment.fragment.project, comment.fragment) %>
+  <div class="comment" id="comment_id_<%= comment.id %>">
+    <div class="comment_head">
+      <div class="comment_actions">
+        <%= link_to "Zum Fragment gehen", project_fragment_path(comment.fragment.project, comment.fragment) %>
+      </div>
+      <%= image_tag comment.user.gravatar_link, :class => "avatar" %>
+      <%= content_tag :span, comment.user.name, :class => "name" %>
+      <%= l(comment.updated_at, :format => :short) %>
+      <%= content_tag :div, comment.tag_list.map{|tag| content_tag :span, tag, :class => "label notice"}.join(" ").html_safe, :class => "tags" %>
     </div>
+    <p><%= Kramdown::Document.new(truncate(comment.body, :length => 200)).to_html.html_safe %></p>
   </div>
-  <p><%= Kramdown::Document.new(comment.body).to_html.html_safe %></p>
-</div>
 <% end %>
