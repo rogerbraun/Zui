@@ -71,7 +71,7 @@ initializeTranslationMode = () ->
       header = "[#{selected}]"
       menu.find(".header").text(header)
       menu.find(".edit").text("D: #{translation}")
-      menu.find(".suggestions").html("")
+      fillWithSuggestions(menu.find(".suggestions"), selected)
   )
 
 document.initializeTranslationMode = initializeTranslationMode  
