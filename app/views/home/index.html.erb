@@ -11,7 +11,7 @@
           <div class="span8 columns">
             <h3>Meine Projekte</h3>
             <% if @projects.empty? %>
-              <p>Noch keine Projekte. Legen sie eins an! <%= link_to "Neues Project", new_project_path %></p>
+              <p>Noch keine Projekte. Legen sie eins an! <%= link_to "Neues Projekt", new_project_path %></p>
             <% else %>
               <%= render "projects/list" %>
             <% end %>

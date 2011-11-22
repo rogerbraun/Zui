@@ -1,4 +1,4 @@
-<%= form_for([@project, @fragment], :remote => true) do |f| %>
+<%= form_for([@project, @fragment], :remote => request.xhr?) do |f| %>
   <% if @fragment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@fragment.errors.count, "error") %> prohibited this project from being saved:</h2>
