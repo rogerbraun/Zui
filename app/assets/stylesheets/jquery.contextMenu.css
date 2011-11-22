@@ -15,7 +15,7 @@
 	margin: 0px;
 }
 
-.contextMenu A {
+.contextMenu li A {
 	color: #333;
 	text-decoration: none;
 	display: block;
@@ -26,6 +26,10 @@
 	outline: none;
 	padding: 1px 5px;
 	padding-left: 28px;
+}
+
+.contextMenu li li a {
+  padding-left: 0px;
 }
 
 .contextMenu span.header {

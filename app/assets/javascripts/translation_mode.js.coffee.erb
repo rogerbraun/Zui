@@ -5,7 +5,20 @@ getSelected = () ->
 fillWithSuggestions = (el, selected) ->
   url = "http://wadoku.eu/entries/tres?callback=?"
   jQuery.getJSON(url,{search: selected}, (data) ->
-    el.html(data[0])
+    ul = $("<ul class='suggestions'></ul>")
+    $.each(data, (index, suggestion) ->
+      li = $("<li><a href='#'>#{suggestion}</a></li>")
+      ul.append(li)
+      li.click((event) ->
+        new_text = $("#comment_body").val() + " " + suggestion
+        $("#comment_body").val(new_text)
+      )
+    )
+    if data.length == 0
+      ul.append("<li>Keine Vorschläge...</li>")
+    el.html("")
+    el.append("<span class='header'>Vorschläge</span>")
+    el.append(ul)
   )
    
 
@@ -58,6 +71,7 @@ initializeTranslationMode = () ->
       header = "[#{selected}]"
       menu.find(".header").text(header)
       menu.find(".edit").text("D: #{translation}")
+      menu.find(".suggestions").html("")
   )
 
 document.initializeTranslationMode = initializeTranslationMode  
