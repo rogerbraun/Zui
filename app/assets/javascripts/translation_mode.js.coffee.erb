@@ -2,6 +2,13 @@ getSelected = () ->
   range = window.getSelection()
   range.toString()
 
+fillWithSuggestions = (el, selected) ->
+  url = "http://wadoku.eu/entries/tres?callback=?"
+  jQuery.getJSON(url,{search: selected}, (data) ->
+    el.html(data[0])
+  )
+   
+
 initializeTranslationMode = () ->
   $(".translated").twipsy(
     title: "data-translation"
@@ -24,10 +31,12 @@ initializeTranslationMode = () ->
       if action == "edit"
         jQuery.ajax "http://#{window.location.host}/translations/new?source_lang=#{selected}"
     ,
-    (menu) ->
-      header = "[" + getSelected() + "]"
+    (menu, el) ->
+      selected = getSelected()
+      header = "[" + selected + "]"
       menu.find(".header").text(header)
-      menu.find(".edit").text("#{getSelected()} zum Glossar hinzufügen")
+      menu.find(".edit").text("#{selected} zum Glossar hinzufügen")
+      fillWithSuggestions(menu.find(".suggestions"), selected)
   )
 
   $(".translated").contextMenu(
