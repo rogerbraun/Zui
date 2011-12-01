@@ -3,6 +3,6 @@ module FragmentHelper
     Translation.all.each do |translation|
       text.gsub!(translation.source_lang, "<span class='translated' data-translation='#{translation.target_lang}'>#{translation.source_lang}</span>")
     end
-    "<p class='translatable'>#{text}</p>".html_safe
+    "<div class='translatable'>#{text}</div>".html_safe
   end
 end

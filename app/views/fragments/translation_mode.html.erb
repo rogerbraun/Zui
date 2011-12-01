@@ -15,7 +15,7 @@
       <div id="original">
         <h1>Original</h1>
         <h2><%= @fragment.title %></h2>
-        <%= make_translatable @fragment.content %>
+        <%= make_translatable Kramdown::Document.new(@fragment.content).to_html.html_safe %>
       </div>
     </div>
     <div class="span10">
